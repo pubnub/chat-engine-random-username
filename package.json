@@ -4,5 +4,8 @@
   "main": "./plugin.js",
   "open-chat-framework": {
     "namespace": "random-username"
+  },
+  "dependencies": {
+    "ocf": "^0.0.2"
   }
 }
