@@ -11,31 +11,27 @@ var randomName = () => {
 
 }
 
-module.exports = (config) => {
+module.exports = (chat) => {
 
-    var plugin = (chat) => {
+    // define send middleware
+    class extension {
+        construct () {
 
-        // define send middleware
-        class extension {
-            construct () {
+            let state = this.parent.state(chat);
 
-                let state = this.parent.state(chat);
+            state.username = randomName();
 
-                state.username = randomName();
-
-                this.parent.update(state, chat);
-            }
-
-        };
-
-        // define both the extended methods and the middleware in our plugin
-        return {
-            namespace: 'random-username',
-            extends: {
-                Me: extension
-            }
+            this.parent.update(state, chat);
         }
 
+    };
+
+    // define both the extended methods and the middleware in our plugin
+    return {
+        namespace: 'random-username',
+        extends: {
+            Me: extension
+        }
     }
 
 }
