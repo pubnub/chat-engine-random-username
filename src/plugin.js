@@ -1,4 +1,8 @@
-var randomName = () => {
+/**
+* Update a {@link Me}'s state in a {@link Chat} by randomly combining a color and an animal. Ex: "teal_seal"
+* @module chat-engine-random-username
+*/
+const randomName = () => {
 
     // list of friendly animals
     let animals = ['pigeon', 'seagull', 'bat', 'owl', 'sparrows', 'robin', 'bluebird', 'cardinal', 'hawk', 'fish', 'shrimp', 'frog', 'whale', 'shark', 'eel', 'seal', 'lobster', 'octopus', 'mole', 'shrew', 'rabbit', 'chipmunk', 'armadillo', 'dog', 'cat', 'lynx', 'mouse', 'lion', 'moose', 'horse', 'deer', 'raccoon', 'zebra', 'goat', 'cow', 'pig', 'tiger', 'wolf', 'pony', 'antelope', 'buffalo', 'camel', 'donkey', 'elk', 'fox', 'monkey', 'gazelle', 'impala', 'jaguar', 'leopard', 'lemur', 'yak', 'elephant', 'giraffe', 'hippopotamus', 'rhinoceros', 'grizzlybear'];
@@ -11,14 +15,22 @@ var randomName = () => {
 
 }
 
+/**
+* @function
+* @param {Chat} chat The {@link Chat} to add the username to. Most likely will be ```globalChat```.
+*/
 module.exports = (chat) => {
 
-    // define send middleware
     class extension {
+
         construct () {
 
             let state = this.parent.state(chat);
 
+            /**
+            @member state()"."username
+            @ceextends User
+            */
             state.username = randomName();
 
             this.parent.update(state, chat);
