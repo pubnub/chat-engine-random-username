@@ -1,5 +1,5 @@
 /**
-* Update a {@link Me}'s state in a {@link Chat} by randomly combining a color and an animal. Ex: "teal_seal"
+* Update a {@link Me}'s state by randomly combining a color and an animal. Ex: "teal_seal"
 * @module chat-engine-random-username
 */
 const randomName = () => {
@@ -17,23 +17,22 @@ const randomName = () => {
 
 /**
 * @function
-* @param {Chat} chat The {@link Chat} to add the username to. Most likely will be ```globalChat```.
 */
-module.exports = (chat) => {
+module.exports = () => {
 
     class extension {
 
         construct () {
 
-            let state = this.parent.state(chat);
+            let state = this.parent.state;
 
             /**
-            @member state()"."username
+            @member state"."username
             @ceextends User
             */
             state.username = randomName();
 
-            this.parent.update(state, chat);
+            this.parent.update(state);
         }
 
     };
