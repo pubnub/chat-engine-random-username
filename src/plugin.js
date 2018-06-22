@@ -24,7 +24,7 @@ module.exports = () => {
 
         construct () {
 
-            let state = this.parent.state;
+            let state = this.parent.state();
 
             /**
             @member state"."username
