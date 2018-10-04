@@ -1,4 +1,5 @@
 /**
+* @overview This plugin will set a random username into the state of the user. <br>
 * Update a {@link Me}'s state by randomly combining a color and an animal. Ex: "teal_seal"
 * @module chat-engine-random-username
 */
